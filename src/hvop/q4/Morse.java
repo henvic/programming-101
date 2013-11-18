@@ -1,70 +1,72 @@
 package hvop.q4;
 import java.util.Scanner;
-import java.util.Map;
-import java.util.HashMap;
 
 public class Morse {
-    public static Map getDictionary () {
-        return new HashMap<Character, String>() {
-            {
-                put(' ', "/");
-                put('a', ".-");
-                put('b', "-...");
-                put('c', "-.-.");
-                put('d', "-..");
-                put('e', ".");
-                put('f', "..-.");
-                put('g', "--.");
-                put('h', "....");
-                put('i', "..");
-                put('j', ".---");
-                put('k', "-.-");
-                put('l', ".-..");
-                put('m', "--");
-                put('n', "-.");
-                put('o', "---");
-                put('p', "--.-");
-                put('q', "--.-");
-                put('r', ".-.");
-                put('s', "...");
-                put('t', "-");
-                put('u', "..-");
-                put('v', "...-");
-                put('w', ".--");
-                put('x', "-..-");
-                put('y', "-.--");
-                put('z', "--..");
-                put('á', ".--.-");
-                put('ä', ".-.-");
-                put('é', "..-..");
-                put('ñ', "--.--");
-                put('ö', "---.");
-                put('ü', "..--");
-                put('1', ".----");
-                put('2', "..---");
-                put('3', "...--");
-                put('4', "....-");
-                put('5', ".....");
-                put('6', "-....");
-                put('7', "--...");
-                put('8', "---..");
-                put('9', "----.");
-                put('0', "-----");
-                put(',', "--..--");
-                put('.', ".-.-.-");
-                put('?', "..--..");
-                put(';', "-.-.-.");
-                put(':', "---...");
-                put('\'', ".----.");
-                put('-', "-....-");
-                put('/', "-..-.");
-                put('(', "-.--.");
-                put(')', "-.--.-");
-            }
-        };
+    private static String translate (char c) {
+        //fallback to the original char if there's no morse code associated to it
+        //just to make it easier to see if any of the required translation rules is missing
+        String word = Character.toString(c);
+
+        switch (c) {
+            case ' ': word = "/"; break;
+            case 'a': word = ".-"; break;
+            case 'b': word = "-..."; break;
+            case 'c': word = "-.-."; break;
+            case 'd': word = "-.."; break;
+            case 'e': word = "."; break;
+            case 'f': word = "..-."; break;
+            case 'g': word = "--."; break;
+            case 'h': word = "...."; break;
+            case 'i': word = ".."; break;
+            case 'j': word = ".---"; break;
+            case 'k': word = "-.-"; break;
+            case 'l': word = ".-.."; break;
+            case 'm': word = "--"; break;
+            case 'n': word = "-."; break;
+            case 'o': word = "---"; break;
+            case 'p': word = "--.-"; break;
+            case 'q': word = "--.-"; break;
+            case 'r': word = ".-."; break;
+            case 's': word = "..."; break;
+            case 't': word = "-"; break;
+            case 'u': word = "..-"; break;
+            case 'v': word = "...-"; break;
+            case 'w': word = ".--"; break;
+            case 'x': word = "-..-"; break;
+            case 'y': word = "-.--"; break;
+            case 'z': word = "--.."; break;
+            case 'á': word = ".--.-"; break;
+            case 'ä': word = ".-.-"; break;
+            case 'é': word = "..-.."; break;
+            case 'ñ': word = "--.--"; break;
+            case 'ö': word = "---."; break;
+            case 'ü': word = "..--"; break;
+            case '1': word = ".----"; break;
+            case '2': word = "..---"; break;
+            case '3': word = "...--"; break;
+            case '4': word = "....-"; break;
+            case '5': word = "....."; break;
+            case '6': word = "-...."; break;
+            case '7': word = "--..."; break;
+            case '8': word = "---.."; break;
+            case '9': word = "----."; break;
+            case '0': word = "-----"; break;
+            case ',': word = "--..--"; break;
+            case '.': word = ".-.-.-"; break;
+            case '?': word = "..--.."; break;
+            case ';': word = "-.-.-."; break;
+            case ':': word = "---..."; break;
+            case '\'': word = ".----."; break;
+            case '-': word = "-....-"; break;
+            case '/': word = "-..-."; break;
+            case '(': word = "-.--."; break;
+            case ')': word = "-.--.-"; break;
+        }
+
+        return word;
     }
 
-    public static String encode (String message, Map dictionary) {
+    public static String encode (String message) {
         int length;
         String code = "";
 
@@ -72,7 +74,7 @@ public class Morse {
         length = message.length();
 
         for (int counter = 0; counter < length; counter += 1) {
-            code += dictionary.get(message.charAt(counter)).toString();
+            code += translate(message.charAt(counter));
         }
 
         return code;
@@ -82,9 +84,6 @@ public class Morse {
         boolean exit = false;
         String message;
         Scanner input;
-        Map dictionary;
-
-        dictionary = getDictionary();
 
         input = new Scanner(System.in);
 
@@ -93,7 +92,7 @@ public class Morse {
         while (!exit) {
             System.out.print("Message: ");
             message = input.nextLine();
-            System.out.println("Morse: " + encode(message, dictionary));
+            System.out.println("Morse: " + encode(message));
             System.out.print("Continue? (yes/no) ");
             exit = input.nextLine().equals("no");
         }
