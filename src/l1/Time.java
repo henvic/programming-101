@@ -1,4 +1,4 @@
-package hvop.q5;
+package l1;
 import java.util.Scanner;
 
 public class Time {

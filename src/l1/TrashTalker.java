@@ -1,4 +1,4 @@
-package hvop.q1;
+package l1;
 import java.util.Scanner;
 
 public class TrashTalker {

@@ -1,4 +1,4 @@
-package hvop.q6;
+package l1;
 import java.util.Scanner;
 import java.util.Arrays;
 
