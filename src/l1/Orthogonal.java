@@ -27,16 +27,11 @@ public class Orthogonal {
         return (getDotProduct(vector1, vector2) == 0);
     }
 
-    /**
-     * Pega as coordenadas
-     * Para esse caso ignoramos completamente o sinal -
-     * pois, dadas as propriedades dos vetores ele
-     * não é necessário
-     */
     private static int[] getVector() {
         boolean numberBegin = false;
         boolean addDigit = false;
         boolean isDigit;
+        int numberBeginPos = -1;
         int[] vector;
         int position = 0;
         char eachChar;
@@ -57,6 +52,10 @@ public class Orthogonal {
                 temporary += eachChar;
                 numberBegin = !(counter == stringLength - 1);
 
+                if (numberBegin) {
+                    numberBeginPos = counter;
+                }
+
                 if (!numberBegin) {
                     addDigit = true;
                 }
@@ -70,6 +69,12 @@ public class Orthogonal {
             if (addDigit) {
                 addDigit = false;
                 vector[position] = Integer.parseInt(temporary);
+
+                if (numberBeginPos > 0 && vector1.charAt(numberBeginPos - 1) == '-') {
+                    vector[position] *= - 1;
+                    System.out.println(vector[position]);
+                }
+
                 position += 1;
                 temporary = "";
             }
