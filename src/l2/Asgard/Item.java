@@ -7,6 +7,7 @@ public class Item {
     //mas seria não certo do ponto de vista de separation of concerns
 
     private String name;
+    private String description;
     private int id;
 
     private boolean working;
@@ -26,6 +27,14 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isWorking() {
@@ -52,6 +61,7 @@ public class Item {
     public String toString() {
         return "Nome: " + this.name + "\n" +
             "Funcionando: " + ((this.working) ? "sim" : "não") +
+            "\nDescrição: " + this.description +
             "\nMágico: " + ((this.magic) ? "sim" : "não") + "\n\n";
     }
 }
