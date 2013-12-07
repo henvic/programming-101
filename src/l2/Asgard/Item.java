@@ -14,7 +14,7 @@ public class Item {
     private boolean magic;
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -22,7 +22,7 @@ public class Item {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -38,19 +38,19 @@ public class Item {
     }
 
     public boolean isWorking() {
-        return working;
+        return this.working;
     }
 
     public void setWorking(boolean working) {
         this.working = working;
 
         if (!this.working) {
-            magic = false;
+            this.magic = false;
         }
     }
 
     public boolean isMagic() {
-        return magic;
+        return this.magic;
     }
 
     public void setMagic(boolean magic) {
