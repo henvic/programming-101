@@ -47,6 +47,9 @@ public class Main {
 
         item.setName(name);
 
+        System.out.print("Descrição: ");
+        item.setDescription(this.input.nextLine());
+
         System.out.print("Estado do ítem (quebrado / funcionando): ");
         item.setWorking(!this.input.nextLine().contains("quebrado"));
 
