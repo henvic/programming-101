@@ -3,6 +3,8 @@ package l2.Building;
 import java.util.Scanner;
 
 public class Main {
+    private Scanner input;
+    
     //not allowed to use Math.abs,
     //this is a compromise to offer the user the better experience
     private int getPositive(int number) {
@@ -15,30 +17,30 @@ public class Main {
 
     public Building configureBuilding (Scanner input, Building building, Unit unit) {
         System.out.print("Nome: ");
-        building.setName(input.nextLine());
+        building.setName(this.input.nextLine());
 
         System.out.print("Endereço: ");
-        building.setAddress1stLine(input.nextLine());
+        building.setAddress1stLine(this.input.nextLine());
 
         System.out.print("Bairro: ");
-        building.setAddress2ndLine(input.nextLine());
+        building.setAddress2ndLine(this.input.nextLine());
 
         System.out.print("Cidade: ");
-        building.setCity(input.nextLine());
+        building.setCity(this.input.nextLine());
 
         System.out.print("Estado: ");
-        building.setState(input.nextLine());
+        building.setState(this.input.nextLine());
 
         System.out.print("Andares: ");
-        building.setFloors(getPositive(input.nextInt()));
-        input.nextLine();
+        building.setFloors(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Unidades por andar: ");
-        building.setUnitsPerFloor(getPositive(input.nextInt()));
-        input.nextLine();
+        building.setUnitsPerFloor(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Área comum: ");
-        building.setExtra(input.nextLine());
+        building.setExtra(this.input.nextLine());
 
         System.out.print("\n\nEspecificações dos apartamentos\n");
         building.setUnit(configureUnit(input, unit));
@@ -48,35 +50,35 @@ public class Main {
 
     public Unit configureUnit (Scanner input, Unit unit) {
         System.out.print("Área: ");
-        unit.setArea(getPositive(input.nextInt()));
-        input.nextLine();
+        unit.setArea(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Banheiros: ");
-        unit.setBathrooms(getPositive(input.nextInt()));
-        input.nextLine();
+        unit.setBathrooms(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Quartos: ");
-        unit.setRooms(getPositive(input.nextInt()));
-        input.nextLine();
+        unit.setRooms(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Suítes: ");
-        unit.setDeluxeRooms(getPositive(input.nextInt()));
-        input.nextLine();
+        unit.setDeluxeRooms(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Vagas: ");
-        unit.setParkingSlots(getPositive(input.nextInt()));
-        input.nextLine();
+        unit.setParkingSlots(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         System.out.print("Preço: ");
-        unit.setPrice(getPositive(input.nextInt()));
-        input.nextLine();
+        unit.setPrice(getPositive(this.input.nextInt()));
+        this.input.nextLine();
 
         return unit;
     }
 
     public void main (String[] args) {
-        Scanner input = new Scanner(System.in);
+        this.input = new Scanner(System.in);
 
-        System.out.print(this.configureBuilding(input, new Building(), new Unit()).toString());
+        System.out.print(this.configureBuilding(this.input, new Building(), new Unit()).toString());
     }
 }
