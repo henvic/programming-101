@@ -56,6 +56,8 @@ public class Cli {
         try {
             id = facade.createCargo(name, amount, specialInstrument);
             System.out.println("Carga #" + id + " criada com sucesso.");
+        } catch (IllegalNumberException ignore) {
+            System.out.println("Número ilegal usado. Use apenas valores absolutos.");
         } catch (InvalidInstrumentTypeException ignore) {
             System.out.println("Carga deve ser alocada apenas para foguete de carga e robô de exploração.");
         } catch (ObjectNotFoundException ignore) {
