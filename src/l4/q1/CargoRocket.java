@@ -43,7 +43,7 @@ public class CargoRocket extends Rocket {
             if (cargo[counter] != 0) {
                 cargoList += "#" + cargo[counter];
 
-                if (counter < length - 1) {
+                if (counter < length - 2) {
                     cargoList += ", ";
                 }
             }

@@ -85,7 +85,7 @@ public class ExplorationRobot extends SpecialInstrument {
             if (cargo[counter] != 0) {
                 cargoList += "#" + cargo[counter];
 
-                if (counter < length - 1) {
+                if (counter < length - 2) {
                     cargoList += ", ";
                 }
             }
