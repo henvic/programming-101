@@ -98,8 +98,12 @@ public class Facade {
 
     public int createCargoRocket (int cost, int height, int length, int width,
                                   int fuel, String destination, String pilot,
-                                  int maxCargoCells) {
+                                  int maxCargoCells) throws IllegalNumberException {
         int id = this.getNextUniversalId();
+
+        if (cost < 0 || height < 0 || length < 0 || width < 0 || fuel < 0) {
+            throw new IllegalNumberException();
+        }
 
         try {
             CargoRocket cargoRocket = new CargoRocket(id, cost,
