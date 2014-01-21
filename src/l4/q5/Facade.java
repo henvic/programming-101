@@ -182,7 +182,11 @@ public class Facade {
         throw new TypeMismatchException();
     }
 
-    public void update (Rocket original, int fuel, String pilot, String destination) {
+    public void update (Rocket original, int fuel, String pilot, String destination) throws IllegalNumberException {
+        if (fuel < 0) {
+            throw new IllegalNumberException();
+        }
+
         original.setPilot(pilot);
         original.setFuel(fuel);
         original.setDestination(destination);
