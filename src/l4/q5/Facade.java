@@ -192,7 +192,12 @@ public class Facade {
         original.setDestination(destination);
     }
 
-    public void update (ExplorationRobot explorationRobot, int fuel, int eta, String destination) {
+    public void update (ExplorationRobot explorationRobot, int fuel, int eta, String destination)
+            throws IllegalNumberException {
+        if (fuel < 0 || eta < 0) {
+            throw new IllegalNumberException();
+        }
+
         explorationRobot.setFuel(fuel);
         explorationRobot.setEta(eta);
         explorationRobot.setDestination(destination);
