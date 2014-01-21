@@ -106,15 +106,20 @@ public class Cli {
             totalPassengers = input.nextInt();
             input.nextLine();
 
+            if (totalPassengers < 0) {
+                throw new IllegalNumberException();
+            }
+
             passengers = this.getArrayOfPassengers(totalPassengers);
+
+            id = facade.createExplorationRocket(cost, height, length, width, fuel, destination, pilot, passengers);
+
+            System.out.println("Foguete de exploração #" + id + " criado.");
         } catch (InputMismatchException ignore) {
             System.out.println("Tipo inválido.");
-            return;
+        } catch (IllegalNumberException ignore) {
+            System.out.println("Número ilegal usado. Use apenas valores absolutos.");
         }
-
-        id = facade.createExplorationRocket(cost, height, length, width, fuel, destination, pilot, passengers);
-
-        System.out.println("Foguete de exploração #" + id + " criado.");
     }
 
     private void createCargoRocketOption () {
