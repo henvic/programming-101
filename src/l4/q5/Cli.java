@@ -254,19 +254,22 @@ public class Cli {
         String destination;
 
         //to alter the cargo, use its cli interface directly
+        try {
+            System.out.print("Combustível: ");
+            fuel = input.nextInt();
+            input.nextLine();
 
-        System.out.print("Combustível: ");
-        fuel = input.nextInt();
-        input.nextLine();
+            System.out.print("Destino: ");
+            destination = input.nextLine();
 
-        System.out.print("Destino: ");
-        destination = input.nextLine();
+            System.out.print("Tempo de chegada ao destino: ");
+            eta = input.nextInt();
+            input.nextLine();
 
-        System.out.print("Tempo de chegada ao destino: ");
-        eta = input.nextInt();
-        input.nextLine();
-
-        facade.update(explorationRobot, fuel, eta, destination);
+            facade.update(explorationRobot, fuel, eta, destination);
+        } catch (InputMismatchException ignore) {
+            System.out.println("Tipo inválido.");
+        }
     }
 
     private void update() {
