@@ -272,6 +272,8 @@ public class Cli {
             input.nextLine();
 
             facade.update(explorationRobot, fuel, eta, destination);
+        } catch (IllegalNumberException ignore) {
+            System.out.println("Número ilegal usado. Use apenas valores absolutos.");
         } catch (InputMismatchException ignore) {
             System.out.println("Tipo inválido.");
         }
