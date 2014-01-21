@@ -51,11 +51,15 @@ public class Facade {
 
     public int createCargo (String name, int amount, int specialInstrument)
             throws ObjectNotFoundException, ObjectAlreadyExistsException,
-            InvalidInstrumentTypeException, ExhaustedCargoCellsException {
+            InvalidInstrumentTypeException, ExhaustedCargoCellsException, IllegalNumberException {
         int cells[] = new int[0];
         int free;
         Cargo cargo;
         Object instrument = this.get(specialInstrument);
+
+        if (amount < 0) {
+            throw new IllegalNumberException();
+        }
 
         if (!(instrument instanceof CargoRocket) && !(instrument instanceof ExplorationRobot)) {
             throw new InvalidInstrumentTypeException("Cargo should be for CargoRocket or ExplorationRobot only.");
