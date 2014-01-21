@@ -198,14 +198,12 @@ public class Cli {
                 input.nextLine();
             }
 
-        } catch (InputMismatchException ignore) {
-            System.out.println("Tipo inválido.");
-            return;
-        }
-
-        try {
             id = facade.createExplorationRobot(cost, destination, eta, fuel, freighter, maxCargoCells);
             System.out.println("Robô de exploração #" + id + " criado.");
+        } catch (InputMismatchException ignore) {
+            System.out.println("Tipo inválido.");
+        } catch (IllegalNumberException ignore) {
+            System.out.println("Número ilegal usado. Use apenas valores absolutos.");
         } catch (InvalidCargoException ignore) {// it's never gonna happen
         }
     }
