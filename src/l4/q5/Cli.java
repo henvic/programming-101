@@ -157,14 +157,13 @@ public class Cli {
             maxCargoCells = input.nextInt();
             input.nextLine();
 
-        } catch (InputMismatchException ignore) {
+            id = facade.createCargoRocket(cost, height, length, width, fuel, destination, pilot, maxCargoCells);
+            System.out.println("Foguete de carga #" + id + " criado.");
+        } catch (IllegalNumberException ignore) {
+            System.out.println("Número ilegal usado. Use apenas valores absolutos.");
+        } catch(InputMismatchException ignore) {
             System.out.println("Tipo inválido.");
-            return;
         }
-
-        id = facade.createCargoRocket(cost, height, length, width, fuel, destination, pilot, maxCargoCells);
-
-        System.out.println("Foguete de carga #" + id + " criado.");
     }
 
     private void createExplorationRobotOption () {
