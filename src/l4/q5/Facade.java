@@ -116,8 +116,13 @@ public class Facade {
     }
 
     public int createExplorationRocket (int cost, int height, int length, int width,
-                                  int fuel, String destination, String pilot, String[] passengers) {
+                                  int fuel, String destination, String pilot, String[] passengers)
+            throws IllegalNumberException {
         int id = this.getNextUniversalId();
+
+        if (cost < 0 || height < 0 || length < 0 || width < 0 || fuel < 0) {
+            throw new IllegalNumberException();
+        }
 
         try {
             ExplorationRocket explorationRocket = new ExplorationRocket(id, cost,
