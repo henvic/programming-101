@@ -245,12 +245,13 @@ public class Cli {
 
             System.out.print("Destino: ");
             destination = input.nextLine();
+
+            facade.update(rocket, fuel, pilot, destination);
+        } catch (IllegalNumberException ignore) {
+                System.out.println("Número ilegal usado. Use apenas valores absolutos.");
         } catch (InputMismatchException ignore) {
             System.out.println("Tipo inválido.");
-            return;
         }
-
-        facade.update(rocket, fuel, pilot, destination);
     }
 
     private void updateExplorationRobot(ExplorationRobot explorationRobot) {
