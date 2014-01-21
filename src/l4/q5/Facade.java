@@ -135,8 +135,13 @@ public class Facade {
     }
 
     public int createExplorationRobot (int cost, String destination, int eta, int fuel,
-                                       boolean freighter, int maxCargoCells) throws InvalidCargoException {
+                                       boolean freighter, int maxCargoCells)
+            throws InvalidCargoException, IllegalNumberException {
         int id = this.getNextUniversalId();
+
+        if (cost < 0 || eta < 0 || fuel < 0 || maxCargoCells < 0) {
+            throw new IllegalNumberException();
+        }
 
         try {
             ExplorationRobot explorationRobot = new ExplorationRobot(id, cost,
