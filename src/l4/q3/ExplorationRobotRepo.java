@@ -10,8 +10,6 @@ public class ExplorationRobotRepo implements l4.q2.ExplorationRobotRepo {
         int length = explorationRobots.length;
         ExplorationRobot[] newExplorationRobots;
 
-        System.out.println("robot adicionando");
-
         for (int counter = 0; counter < length; counter += 1) {
             if (explorationRobots[counter] == null) {
                 explorationRobots[counter] = explorationRobot;
