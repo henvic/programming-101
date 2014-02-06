@@ -19,7 +19,7 @@ public class ExplorationRobotRepo implements l4.q2.ExplorationRobotRepo {
 
         newExplorationRobots = new ExplorationRobot[length + 1];
 
-        System.arraycopy(explorationRobots, 0, newExplorationRobots, 0, 0);
+        System.arraycopy(explorationRobots, 0, newExplorationRobots, 0, length);
         this.explorationRobots = newExplorationRobots;
 
         explorationRobots[length] = explorationRobot;

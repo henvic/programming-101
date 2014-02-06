@@ -19,7 +19,7 @@ public class CargoRepo implements l4.q2.CargoRepo {
 
         newCargoes = new Cargo[length + 1];
 
-        System.arraycopy(cargoes, 0, newCargoes, 0, 0);
+        System.arraycopy(cargoes, 0, newCargoes, 0, length);
         this.cargoes = newCargoes;
 
         cargoes[length] = cargo;

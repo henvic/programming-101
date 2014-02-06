@@ -19,7 +19,7 @@ public class CargoRocketRepo implements l4.q2.CargoRocketRepo {
 
         newCargoRockets = new CargoRocket[length + 1];
 
-        System.arraycopy(cargoRockets, 0, newCargoRockets, 0, 0);
+        System.arraycopy(cargoRockets, 0, newCargoRockets, 0, length);
         this.cargoRockets = newCargoRockets;
 
         cargoRockets[length] = cargoRocket;

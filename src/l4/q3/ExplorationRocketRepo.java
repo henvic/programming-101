@@ -19,7 +19,7 @@ public class ExplorationRocketRepo implements l4.q2.ExplorationRocketRepo {
 
         newExplorationRockets = new ExplorationRocket[length + 1];
 
-        System.arraycopy(explorationRockets, 0, newExplorationRockets, 0, 0);
+        System.arraycopy(explorationRockets, 0, newExplorationRockets, 0, length);
         this.explorationRockets = newExplorationRockets;
 
         explorationRockets[length] = explorationRocket;
